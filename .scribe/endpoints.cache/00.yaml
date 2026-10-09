@@ -177,6 +177,112 @@ endpoints:
   -
     custom: []
     httpMethods:
+      - POST
+    uri: api/login
+    metadata:
+      custom: []
+      groupName: Users
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Log in'
+      description: |-
+        Exchanges the user's email and password for an OAuth 2.0 access token
+        (password grant, issued through the API's own token endpoint). The response
+        follows RFC 6749 §5.1: send the access token as `Authorization: Bearer <token>`
+        and use the refresh token to obtain a new one before it expires.
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        custom: []
+        name: email
+        description: "The user's email address. Must be a valid email address."
+        required: true
+        example: laura@tazavera.test
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      password:
+        custom: []
+        name: password
+        description: "The user's password."
+        required: true
+        example: secret123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      email: laura@tazavera.test
+      password: secret123
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "token_type": "Bearer",
+            "expires_in": 3600,
+            "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTEifQ.signature",
+            "refresh_token": "def50200a1b2c3d4e5f6..."
+          }
+        headers: []
+        description: Success
+      -
+        custom: []
+        status: 400
+        content: |-
+          {
+            "error": "invalid_grant",
+            "error_description": "The user credentials were incorrect.",
+            "message": "The user credentials were incorrect."
+          }
+        headers: []
+        description: 'Invalid credentials'
+      -
+        custom: []
+        status: 401
+        content: |-
+          {
+            "error": "invalid_client",
+            "error_description": "Client authentication failed",
+            "message": "Client authentication failed"
+          }
+        headers: []
+        description: 'Invalid client'
+      -
+        custom: []
+        status: 422
+        content: |-
+          {
+            "message": "The email field is required.",
+            "errors": {
+              "email": ["The email field is required."],
+              "password": ["The password field is required."]
+            }
+          }
+        headers: []
+        description: 'Validation error'
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
       - GET
     uri: user
     metadata:

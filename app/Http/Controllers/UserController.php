@@ -13,6 +13,7 @@ use App\Models\Passport\Client;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Laravel\Fortify\Http\Requests\LoginRequest as RequestsLoginRequest;
 use Laravel\Passport\Token;
 use Spatie\Permission\Models\Role;
 use Throwable;
@@ -191,7 +192,7 @@ class UserController extends Controller
      * follows RFC 6749 §5.1: send the access token as `Authorization: Bearer <token>`
      * and use the refresh token to obtain a new one before it expires.
      *
-     * @group Authentication
+     * @group Users
      * @unauthenticated
      *
      * @bodyParam email string required The user's email address. Must be a valid email address. Example: laura@tazavera.test
@@ -221,7 +222,7 @@ class UserController extends Controller
      *   }
      * }
      */
-    public function login(LoginRequest $request)
+    public function login(LogInRequest $request)
     {
         $request = $request->validated();
         $client = Client::where('name', 'password')->firstOrFail(); // EDB 10/09/26: client created.

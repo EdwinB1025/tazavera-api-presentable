@@ -10,73 +10,11 @@
     ],
     "info": {
         "name": "tazavera_api API Documentation",
-        "_postman_id": "cf98a33d-0369-47a0-8c8e-8f789fdf155f",
+        "_postman_id": "ab9ddaac-a9a6-4af4-a5e9-a9c8a81fbdfa",
         "description": "REST API for the Tazavera specialty coffee platform. Provides endpoints for managing coffee offerings, sensory evaluations (cupping), user profiles, and supporting taxonomies. Authentication is handled via Laravel Passport (OAuth 2.0) using the Authorization Code flow with PKCE for first-party clients and the Password grant for trusted clients.",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
-        {
-            "name": "Authentication",
-            "description": "",
-            "item": [
-                {
-                    "name": "Log in",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/login",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/login"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"email\":\"laura@tazavera.test\",\"password\":\"secret123\"}"
-                        },
-                        "description": "Exchanges the user's email and password for an OAuth 2.0 access token\n(password grant, issued through the API's own token endpoint). The response\nfollows RFC 6749 \u00a75.1: send the access token as `Authorization: Bearer <token>`\nand use the refresh token to obtain a new one before it expires.",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [],
-                            "code": 200,
-                            "body": "{\n  \"token_type\": \"Bearer\",\n  \"expires_in\": 3600,\n  \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTEifQ.signature\",\n  \"refresh_token\": \"def50200a1b2c3d4e5f6...\"\n}",
-                            "name": "Success"
-                        },
-                        {
-                            "header": [],
-                            "code": 400,
-                            "body": "{\n  \"error\": \"invalid_grant\",\n  \"error_description\": \"The user credentials were incorrect.\",\n  \"message\": \"The user credentials were incorrect.\"\n}",
-                            "name": "Invalid credentials"
-                        },
-                        {
-                            "header": [],
-                            "code": 401,
-                            "body": "{\n  \"error\": \"invalid_client\",\n  \"error_description\": \"Client authentication failed\",\n  \"message\": \"Client authentication failed\"\n}",
-                            "name": "Invalid client"
-                        },
-                        {
-                            "header": [],
-                            "code": 422,
-                            "body": "{\n  \"message\": \"The email field is required.\",\n  \"errors\": {\n    \"email\": [\"The email field is required.\"],\n    \"password\": [\"The password field is required.\"]\n  }\n}",
-                            "name": "Validation error"
-                        }
-                    ]
-                }
-            ]
-        },
         {
             "name": "Coffee Inventory",
             "description": "",
@@ -1070,6 +1008,62 @@
                             "code": 201,
                             "body": "{\n    \"data\": {\n        \"ulid\": \"01M35F5RX4ADGC3CSDXXYB08DC\",\n        \"name\": \"Laura\",\n        \"surname\": \"G\u00f3mez\",\n        \"email\": \"laura@tazavera.test\",\n        \"role\": \"coffeeshop\"\n    },\n    \"message\": \"Profile created.\"\n}",
                             "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Log in",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"laura@tazavera.test\",\"password\":\"secret123\"}"
+                        },
+                        "description": "Exchanges the user's email and password for an OAuth 2.0 access token\n(password grant, issued through the API's own token endpoint). The response\nfollows RFC 6749 \u00a75.1: send the access token as `Authorization: Bearer <token>`\nand use the refresh token to obtain a new one before it expires.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"token_type\": \"Bearer\",\n  \"expires_in\": 3600,\n  \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTEifQ.signature\",\n  \"refresh_token\": \"def50200a1b2c3d4e5f6...\"\n}",
+                            "name": "Success"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n  \"error\": \"invalid_grant\",\n  \"error_description\": \"The user credentials were incorrect.\",\n  \"message\": \"The user credentials were incorrect.\"\n}",
+                            "name": "Invalid credentials"
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n  \"error\": \"invalid_client\",\n  \"error_description\": \"Client authentication failed\",\n  \"message\": \"Client authentication failed\"\n}",
+                            "name": "Invalid client"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"message\": \"The email field is required.\",\n  \"errors\": {\n    \"email\": [\"The email field is required.\"],\n    \"password\": [\"The password field is required.\"]\n  }\n}",
+                            "name": "Validation error"
                         }
                     ]
                 },
