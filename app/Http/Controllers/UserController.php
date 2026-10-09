@@ -8,6 +8,7 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdatePasswordRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\User as ResourcesUser;
+use App\Models\Passport\Client;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -179,6 +180,64 @@ class UserController extends Controller
         $user->forceDelete();
 
         return response()->json(['message' => __('user.deleted')], 200);
+    }
+
+    /**
+     * Log in
+     *
+     * Exchanges the user's email and password for an OAuth 2.0 access token
+     * (password grant, issued through the API's own token endpoint). The response
+     * follows RFC 6749 §5.1: send the access token as `Authorization: Bearer <token>`
+     * and use the refresh token to obtain a new one before it expires.
+     *
+     * @group Authentication
+     * @unauthenticated
+     *
+     * @bodyParam email string required The user's email address. Must be a valid email address. Example: laura@tazavera.test
+     * @bodyParam password string required The user's password. Example: secret123
+     *
+     * @response 200 scenario="Success" {
+     *   "token_type": "Bearer",
+     *   "expires_in": 3600,
+     *   "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTEifQ.signature",
+     *   "refresh_token": "def50200a1b2c3d4e5f6..."
+     * }
+     * @response 400 scenario="Invalid credentials" {
+     *   "error": "invalid_grant",
+     *   "error_description": "The user credentials were incorrect.",
+     *   "message": "The user credentials were incorrect."
+     * }
+     * @response 401 scenario="Invalid client" {
+     *   "error": "invalid_client",
+     *   "error_description": "Client authentication failed",
+     *   "message": "Client authentication failed"
+     * }
+     * @response 422 scenario="Validation error" {
+     *   "message": "The email field is required.",
+     *   "errors": {
+     *     "email": ["The email field is required."],
+     *     "password": ["The password field is required."]
+     *   }
+     * }
+     */
+    public function login(Request $request)
+    {
+        //$request = $request->validated();
+        $client = Client::where('name', 'front')->firstOrFail(); // EDB 10/09/26: client to be created.
+
+        $tokenRequest = Request::create('/oauth/token', 'POST', [
+            'grant_type'    => 'password',
+            'client_id'     => $client->id,
+            'client_secret' => config('services.front.secret'),
+            'username'      => $request->email,
+            'password'      => $request->password,
+            'scope'         => '',
+        ]);
+
+        $response = app()->handle($tokenRequest);
+
+        return response($response->getContent(), $response->getStatusCode())
+            ->header('Content-Type', 'application/json');
     }
 
     /**
