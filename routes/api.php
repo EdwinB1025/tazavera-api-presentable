@@ -12,6 +12,7 @@ use Laravel\Passport\Http\Middleware\CheckTokenForAnyScope;
 
 /**EDB 09/10/26: Public routes */
 Route::post('/register', [UserController::class, 'store']);
+Route::post('/api/login', [UserController::class, 'login']);
 Route::get('/taxonomies', [TaxonomyController::class, 'index']);
 Route::get('/offerings/{offering}', [OfferingController::class, 'show']);
 Route::get('/offerings', [OfferingController::class, 'index']);
@@ -23,7 +24,6 @@ Route::middleware(['auth:api', CheckTokenForAnyScope::using('profile:read', 'pro
     ->group(function () {
 
         /**EDB 09/10/26: Routes to collect user profile data and logs out */
-
         Route::post('/logout', [UserController::class, 'logout']);
         Route::get('/user', [UserController::class, 'show']);
 

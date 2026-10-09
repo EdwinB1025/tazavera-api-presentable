@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Actions\Fortify\UpdateUserPassword;
 use App\Exceptions\RoleAssignmentExcpetion;
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdatePasswordRequest;
 use App\Http\Requests\UpdateUserRequest;
@@ -220,10 +221,10 @@ class UserController extends Controller
      *   }
      * }
      */
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        //$request = $request->validated();
-        $client = Client::where('name', 'front')->firstOrFail(); // EDB 10/09/26: client to be created.
+        $request = $request->validated();
+        $client = Client::where('name', 'front')->firstOrFail(); // EDB 10/09/26: client created.
 
         $tokenRequest = Request::create('/oauth/token', 'POST', [
             'grant_type'    => 'password',
