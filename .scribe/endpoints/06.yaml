@@ -1,0 +1,181 @@
+name: 'Coffee Inventory'
+description: ''
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: coffeeInventory
+    metadata:
+      custom: []
+      groupName: 'Coffee Inventory'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'List coffee inventory'
+      description: |-
+        Returns coffee inventory items, each with coffee details (including
+        currently valid certifications) and roastery. Used by coffeeshops to
+        retrieve available coffees when creating an offering. Supports filtering
+        via query parameters.
+
+        Only non-expired certifications are included (those with no expiry, or an
+        expiry date in the future).
+
+        **Authorization:** requires the `coffeeshop` role and the `profile:read`
+        or `profile:write` scope.
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      coffeeName:
+        custom: []
+        name: coffeeName
+        description: 'Filter by coffee name (max 150 chars). Must not be greater than 150 characters.'
+        required: false
+        example: Geisha
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      originCountry:
+        custom: []
+        name: originCountry
+        description: 'Filter by country of origin (max 60 chars). Must not be greater than 60 characters.'
+        required: false
+        example: Colombia
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      originRegion:
+        custom: []
+        name: originRegion
+        description: 'Filter by region of origin (max 90 chars). Must not be greater than 90 characters.'
+        required: false
+        example: Huila
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      process:
+        custom: []
+        name: process
+        description: 'Filter by processing method (max 60 chars). Must not be greater than 60 characters.'
+        required: false
+        example: Washed
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      producer:
+        custom: []
+        name: producer
+        description: 'Filter by producer name (max 150 chars). Must not be greater than 150 characters.'
+        required: false
+        example: 'Finca La Esperanza'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      city:
+        custom: []
+        name: city
+        description: 'Filter by city (max 90 chars). Must not be greater than 90 characters.'
+        required: false
+        example: Barcelona
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanQueryParameters:
+      coffeeName: Geisha
+      originCountry: Colombia
+      originRegion: Huila
+      process: Washed
+      producer: 'Finca La Esperanza'
+      city: Barcelona
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+              "data": [
+                  {
+                      "ulid": "01K5Y4R7N2D9W6T3H8M1Q5V0XC",
+                      "roastLot": "L-2026-014",
+                      "productionDate": "2026-09-19",
+                      "coffee": {
+                          "ulid": "01K5X2B8P4F7J3N9R6T1W5Y0ZG",
+                          "name": "Huila El Mirador",
+                          "roastLevel": "medium",
+                          "process": "washed",
+                          "variety": "Caturra",
+                          "producer": null,
+                          "country": "Colombia",
+                          "region": "Huila",
+                          "altitude": 1800,
+                          "lot": "HM-07",
+                          "certifications": [
+                              {
+                                  "code": "organic",
+                                  "description": "Certified organic production."
+                              }
+                          ]
+                      },
+                      "roastery": {
+                          "ulid": "01K5W7H3M9Q2T6X4B8N1R5V0CE",
+                          "name": "Nómada Roasters",
+                          "description": "Tostador de especialidad en Barcelona."
+                      }
+                  },
+                  {
+                      "ulid": "01K5Y4R7N2D9W6T3H8M1Q5V0XD",
+                      "roastLot": "L-2026-021",
+                      "productionDate": "2026-09-24",
+                      "coffee": {
+                          "ulid": "01K5X2B8P4F7J3N9R6T1W5Y0ZH",
+                          "name": "Sidama Bensa",
+                          "roastLevel": "light",
+                          "process": "natural",
+                          "variety": "Heirloom",
+                          "producer": "Bensa Cooperative",
+                          "country": "Ethiopia",
+                          "region": "Sidama",
+                          "altitude": 2100,
+                          "lot": "SB-12",
+                          "certifications": []
+                      },
+                      "roastery": {
+                          "ulid": "01K5W7H3M9Q2T6X4B8N1R5V0CE",
+                          "name": "Nómada Roasters",
+                          "description": "Tostador de especialidad en Barcelona."
+                      }
+                  }
+              ]
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null

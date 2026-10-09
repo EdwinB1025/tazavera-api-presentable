@@ -109,9 +109,20 @@ endpoints:
       password:
         custom: []
         name: password
-        description: 'Password. Must meet the default strength rules and be confirmed via password_confirmation.'
+        description: 'Password. Must meet the default strength rules and be confirmed via passwordConfirmation. The value and <code>passwordConfirmation</code> must match.'
         required: true
         example: Str0ngP@ss!
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      passwordConfirmation:
+        custom: []
+        name: passwordConfirmation
+        description: 'Confirmation of the new password. Must match the password field. Note: camelCase, not the Laravel-default password_confirmation.'
+        required: true
+        example: NewStr0ng!
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -136,13 +147,24 @@ endpoints:
       surname: Restrepo
       email: augusto@example.com
       password: Str0ngP@ss!
+      passwordConfirmation: NewStr0ng!
       role: coffeeshop
     fileParameters: []
     responses:
       -
         custom: []
         status: 201
-        content: "{\r\n    \"data\": {\r\n        \"ulid\": \"01M35F5RX4ADGC3CSDXXYB08DC\",\r\n        \"name\": \"Laura\",\r\n        \"surname\": \"Gómez\",\r\n        \"email\": \"laura@tazavera.test\",\r\n        \"role\": \"coffeeshop\"\r\n    },\r\n    \"message\": \"Profile created.\"\r\n}"
+        content: |-
+          {
+              "data": {
+                  "ulid": "01M35F5RX4ADGC3CSDXXYB08DC",
+                  "name": "Laura",
+                  "surname": "Gómez",
+                  "email": "laura@tazavera.test",
+                  "role": "coffeeshop"
+              },
+              "message": "Profile created."
+          }
         headers: []
         description: ''
     responseFields: []
@@ -183,7 +205,16 @@ endpoints:
       -
         custom: []
         status: 200
-        content: "{\r\n    \"data\": {\r\n        \"ulid\": \"01M35F5RX4ADGC3CSDXXYB08DD\",\r\n        \"name\": \"Andrés\",\r\n        \"surname\": \"Gómez\",\r\n        \"email\": \"andres@tazavera.test\",\r\n        \"role\": \"specialist\"\r\n    }\r\n}"
+        content: |-
+          {
+              "data": {
+                  "ulid": "01M35F5RX4ADGC3CSDXXYB08DD",
+                  "name": "Andrés",
+                  "surname": "Gómez",
+                  "email": "andres@tazavera.test",
+                  "role": "specialist"
+              }
+          }
         headers: []
         description: ''
     responseFields: []
@@ -277,7 +308,17 @@ endpoints:
       -
         custom: []
         status: 200
-        content: "{\r\n    \"data\": {\r\n        \"ulid\": \"01M35F5RX4ADGC3CSDXXYB08DC\",\r\n        \"name\": \"Laura\",\r\n        \"surname\": \"Gómez Ruiz\",\r\n        \"email\": \"laura@tazavera.test\",\r\n        \"role\": \"coffeeshop\"\r\n    },\r\n    \"message\": \"Profile updated.\"\r\n}"
+        content: |-
+          {
+              "data": {
+                  "ulid": "01M35F5RX4ADGC3CSDXXYB08DC",
+                  "name": "Laura",
+                  "surname": "Gómez Ruiz",
+                  "email": "laura@tazavera.test",
+                  "role": "coffeeshop"
+              },
+              "message": "Profile updated."
+          }
         headers: []
         description: ''
       -

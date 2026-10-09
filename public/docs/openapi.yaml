@@ -5,8 +5,11 @@ info:
   version: 1.0.0
 servers:
   -
-    url: 'http://localhost:8000'
+    url: 'https://localhost:8443'
 tags:
+  -
+    name: Authentication
+    description: ''
   -
     name: 'Coffee Inventory'
     description: ''
@@ -35,6 +38,130 @@ security:
   -
     default: []
 paths:
+  /api/login:
+    post:
+      summary: 'Log in'
+      operationId: logIn
+      description: "Exchanges the user's email and password for an OAuth 2.0 access token\n(password grant, issued through the API's own token endpoint). The response\nfollows RFC 6749 §5.1: send the access token as `Authorization: Bearer <token>`\nand use the refresh token to obtain a new one before it expires."
+      parameters: []
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  token_type: Bearer
+                  expires_in: 3600
+                  access_token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTEifQ.signature
+                  refresh_token: def50200a1b2c3d4e5f6...
+                properties:
+                  token_type:
+                    type: string
+                    example: Bearer
+                  expires_in:
+                    type: integer
+                    example: 3600
+                  access_token:
+                    type: string
+                    example: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTEifQ.signature
+                  refresh_token:
+                    type: string
+                    example: def50200a1b2c3d4e5f6...
+        400:
+          description: 'Invalid credentials'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: invalid_grant
+                  error_description: 'The user credentials were incorrect.'
+                  message: 'The user credentials were incorrect.'
+                properties:
+                  error:
+                    type: string
+                    example: invalid_grant
+                  error_description:
+                    type: string
+                    example: 'The user credentials were incorrect.'
+                  message:
+                    type: string
+                    example: 'The user credentials were incorrect.'
+        401:
+          description: 'Invalid client'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: invalid_client
+                  error_description: 'Client authentication failed'
+                  message: 'Client authentication failed'
+                properties:
+                  error:
+                    type: string
+                    example: invalid_client
+                  error_description:
+                    type: string
+                    example: 'Client authentication failed'
+                  message:
+                    type: string
+                    example: 'Client authentication failed'
+        422:
+          description: 'Validation error'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The email field is required.'
+                  errors:
+                    email:
+                      - 'The email field is required.'
+                    password:
+                      - 'The password field is required.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The email field is required.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email field is required.'
+                        items:
+                          type: string
+                      password:
+                        type: array
+                        example:
+                          - 'The password field is required.'
+                        items:
+                          type: string
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: "The user's email address. Must be a valid email address."
+                  example: laura@tazavera.test
+                password:
+                  type: string
+                  description: "The user's password."
+                  example: secret123
+              required:
+                - email
+                - password
+      security: []
   /coffeeInventory:
     get:
       summary: 'List coffee inventory'
@@ -5505,8 +5632,12 @@ paths:
                   example: augusto@example.com
                 password:
                   type: string
-                  description: 'Password. Must meet the default strength rules and be confirmed via password_confirmation.'
+                  description: 'Password. Must meet the default strength rules and be confirmed via passwordConfirmation. The value and <code>passwordConfirmation</code> must match.'
                   example: Str0ngP@ss!
+                passwordConfirmation:
+                  type: string
+                  description: 'Confirmation of the new password. Must match the password field. Note: camelCase, not the Laravel-default password_confirmation.'
+                  example: NewStr0ng!
                 role:
                   type: string
                   description: 'Optional. Role to assign at registration. One of: coffeeshop, specialist, user.'
@@ -5520,6 +5651,7 @@ paths:
                 - surname
                 - email
                 - password
+                - passwordConfirmation
       security: []
   /user:
     get:

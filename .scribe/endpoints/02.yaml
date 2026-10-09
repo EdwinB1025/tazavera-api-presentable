@@ -1,75 +1,23 @@
-name: Offerings
+name: Taxonomies
 description: ''
 endpoints:
   -
     custom: []
     httpMethods:
       - GET
-    uri: 'offerings/{offering_ulid}'
+    uri: taxonomies
     metadata:
       custom: []
-      groupName: Offerings
+      groupName: Taxonomies
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get an offering'
+      title: 'List olfactory taxonomies'
       description: |-
-        Returns a single offering with its full taste profile. Taste notes are
-        returned as a nested tree (up to three levels of olfactory taxonomy),
-        alongside location, coffee, and roastery details.
-      authenticated: false
-      deprecated: false
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      offering_ulid:
-        custom: []
-        name: offering_ulid
-        description: 'The ULID of the offering.'
-        required: true
-        example: 01K6A3M8Q2V7XH4T9B5N1RCW0D
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      offering_ulid: 01K6A3M8Q2V7XH4T9B5N1RCW0D
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: "{\r\n    \"data\": {\r\n        \"ulid\": \"01K6A3M8Q2V7XH4T9B5N1RCW0D\",\r\n        \"evaluationCount\": 5,\r\n        \"defectiveEvaluationCount\": 1,\r\n        \"cuppingAvg\": \"84.25\",\r\n        \"fragranceAffectiveAvg\": \"7.2\",\r\n        \"aromaAffectiveAvg\": \"7.8\",\r\n        \"flavorAffectiveAvg\": \"7.5\",\r\n        \"aftertasteAffectiveAvg\": \"7.1\",\r\n        \"acidityAffectiveAvg\": \"7.4\",\r\n        \"sweetnessAffectiveAvg\": \"7.6\",\r\n        \"mouthfeelAffectiveAvg\": \"7.0\",\r\n        \"overallAffectiveAvg\": \"7.9\",\r\n        \"concordanceAffective\": \"0.812\",\r\n        \"concordanceDescriptive\": \"0.740\",\r\n        \"verificationStatus\": \"verified\",\r\n        \"location\": {\r\n            \"ulid\": \"01K5Z9C2T6H8M3Q7V1X4B9N2PA\",\r\n            \"name\": \"Tazavera Gràcia\",\r\n            \"description\": \"Barra de especialidad en Gràcia.\",\r\n            \"latitud\": \"41.40290000\",\r\n            \"longitud\": \"2.15650000\"\r\n        },\r\n        \"coffeeInventory\": {\r\n            \"ulid\": \"01K5Y4R7N2D9W6T3H8M1Q5V0XC\",\r\n            \"roastLot\": \"L-2026-014\",\r\n            \"productionDate\": \"2026-09-19\",\r\n            \"coffee\": {\r\n                \"ulid\": \"01K5X2B8P4F7J3N9R6T1W5Y0ZG\",\r\n                \"name\": \"Huila El Mirador\",\r\n                \"roastLevel\": \"medium\",\r\n                \"process\": \"washed\",\r\n                \"variety\": \"Caturra\",\r\n                \"producer\": null,\r\n                \"country\": \"Colombia\",\r\n                \"region\": \"Huila\",\r\n                \"altitude\": 1800,\r\n                \"lot\": \"HM-07\"\r\n            },\r\n            \"roastery\": {\r\n                \"ulid\": \"01K5W7H3M9Q2T6X4B8N1R5V0CE\",\r\n                \"name\": \"Nómada Roasters\",\r\n                \"description\": \"Tostador de especialidad en Barcelona.\"\r\n            }\r\n        },\r\n        \"sensoryTaxonomy\": [\r\n            {\r\n                \"ref\": \"01JTAXN0DE0000000000000001\",\r\n                \"type\": \"flavor\",\r\n                \"level\": 0,\r\n                \"count\": 5,\r\n                \"children\": [\r\n                    {\r\n                        \"ref\": \"01JTAXN0DE0000000000000002\",\r\n                        \"type\": \"flavor\",\r\n                        \"level\": 1,\r\n                        \"count\": 4,\r\n                        \"children\": [\r\n                            {\r\n                                \"ref\": \"01JTAXN0DE0000000000000003\",\r\n                                \"type\": \"flavor\",\r\n                                \"level\": 2,\r\n                                \"count\": 4\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"ref\": \"01JTAXN0DE0000000000000004\",\r\n                        \"type\": \"flavor\",\r\n                        \"level\": 1,\r\n                        \"count\": 2,\r\n                        \"children\": [\r\n                            {\r\n                                \"ref\": \"01JTAXN0DE0000000000000005\",\r\n                                \"type\": \"flavor\",\r\n                                \"level\": 2,\r\n                                \"count\": 2\r\n                            }\r\n                        ]\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"ref\": \"01JTAXN0DE0000000000000006\",\r\n                \"type\": \"aroma\",\r\n                \"level\": 0,\r\n                \"count\": 3,\r\n                \"children\": [\r\n                    {\r\n                        \"ref\": \"01JTAXN0DE0000000000000007\",\r\n                        \"type\": \"aroma\",\r\n                        \"level\": 1,\r\n                        \"count\": 3,\r\n                        \"children\": [\r\n                            {\r\n                                \"ref\": \"01JTAXN0DE0000000000000008\",\r\n                                \"type\": \"aroma\",\r\n                                \"level\": 2,\r\n                                \"count\": 3\r\n                            }\r\n                        ]\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"ref\": \"01JTAXN0DE0000000000000009\",\r\n                \"type\": \"main_tastes\",\r\n                \"level\": 0,\r\n                \"count\": 5,\r\n                \"children\": []\r\n            },\r\n            {\r\n                \"ref\": \"01JTAXN0DE000000000000000A\",\r\n                \"type\": \"defects\",\r\n                \"level\": 0,\r\n                \"count\": 1,\r\n                \"children\": [\r\n                    {\r\n                        \"ref\": \"01JTAXN0DE000000000000000B\",\r\n                        \"type\": \"defects\",\r\n                        \"level\": 1,\r\n                        \"count\": 1,\r\n                        \"children\": []\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"cataConcordance\": [\r\n            {\r\n                \"ref\": \"01JTAXN0DE0000000000000001\",\r\n                \"type\": \"aromatics\",\r\n                \"level\": 0,\r\n                \"count\": 5,\r\n                \"children\": [\r\n                    {\r\n                        \"ref\": \"01JTAXN0DE0000000000000002\",\r\n                        \"type\": \"aromatics\",\r\n                        \"level\": 1,\r\n                        \"count\": 4,\r\n                        \"children\": [\r\n                            {\r\n                                \"ref\": \"01JTAXN0DE0000000000000003\",\r\n                                \"type\": \"aromatics\",\r\n                                \"level\": 2,\r\n                                \"count\": 4\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"ref\": \"01JTAXN0DE0000000000000004\",\r\n                        \"type\": \"aromatics\",\r\n                        \"level\": 1,\r\n                        \"count\": 2,\r\n                        \"children\": [\r\n                            {\r\n                                \"ref\": \"01JTAXN0DE0000000000000005\",\r\n                                \"type\": \"aromatics\",\r\n                                \"level\": 2,\r\n                                \"count\": 2\r\n                            }\r\n                        ]\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"ref\": \"01JTAXN0DE0000000000000006\",\r\n                \"type\": \"aromatics\",\r\n                \"level\": 0,\r\n                \"count\": 3,\r\n                \"children\": [\r\n                    {\r\n                        \"ref\": \"01JTAXN0DE0000000000000007\",\r\n                        \"type\": \"aromatics\",\r\n                        \"level\": 1,\r\n                        \"count\": 3,\r\n                        \"children\": [\r\n                            {\r\n                                \"ref\": \"01JTAXN0DE0000000000000008\",\r\n                                \"type\": \"aromatics\",\r\n                                \"level\": 2,\r\n                                \"count\": 3\r\n                            }\r\n                        ]\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"ref\": \"01JTAXN0DE0000000000000009\",\r\n                \"type\": \"main_tastes\",\r\n                \"level\": 0,\r\n                \"count\": 5,\r\n                \"children\": []\r\n            },\r\n            {\r\n                \"ref\": \"01JTAXN0DE000000000000000A\",\r\n                \"type\": \"defects\",\r\n                \"level\": 0,\r\n                \"count\": 1,\r\n                \"children\": [\r\n                    {\r\n                        \"ref\": \"01JTAXN0DE000000000000000B\",\r\n                        \"type\": \"defects\",\r\n                        \"level\": 1,\r\n                        \"count\": 1,\r\n                        \"children\": []\r\n                    }\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n}"
-        headers: []
-        description: ''
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - GET
-    uri: offerings
-    metadata:
-      custom: []
-      groupName: Offerings
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'List offerings'
-      description: |-
-        Returns a paginated list of coffee offerings, each including its taste
-        profile (olfactory taxonomy), coffee inventory (with roastery and coffee
-        details), and location. Supports extensive filtering and sorting via query
-        parameters.
+        Returns the full olfactory taxonomy tree used to classify coffee aromas and
+        flavors. The tree is returned as a nested structure: top-level categories
+        (parent_id = null) with their children and grandchildren eager-loaded
+        (two levels deep).
       authenticated: false
       deprecated: false
     headers:
@@ -77,493 +25,8 @@ endpoints:
       Accept: application/json
     urlParameters: []
     cleanUrlParameters: []
-    queryParameters:
-      coffeeName:
-        custom: []
-        name: coffeeName
-        description: 'Filter by coffee name (partial match). Must not be greater than 150 characters.'
-        required: false
-        example: Geisha
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      originCountry:
-        custom: []
-        name: originCountry
-        description: 'Filter by country of origin. Must not be greater than 90 characters.'
-        required: false
-        example: Colombia
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      originRegion:
-        custom: []
-        name: originRegion
-        description: 'Filter by region of origin. Must not be greater than 90 characters.'
-        required: false
-        example: Huila
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      process:
-        custom: []
-        name: process
-        description: 'Filter by processing method. Must not be greater than 90 characters.'
-        required: false
-        example: Washed
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      producer:
-        custom: []
-        name: producer
-        description: 'Filter by producer name. Must not be greater than 150 characters.'
-        required: false
-        example: 'Finca La Esperanza'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      variety:
-        custom: []
-        name: variety
-        description: 'Filter by coffee variety. Must not be greater than 90 characters.'
-        required: false
-        example: Caturra
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      city:
-        custom: []
-        name: city
-        description: 'Filter by the city of the offering location. Must not be greater than 90 characters.'
-        required: false
-        example: Barcelona
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      coffeeshopUlid:
-        custom: []
-        name: coffeeshopUlid
-        description: 'Filter by coffeeshop (user) ULID. Must match an existing stored value.'
-        required: false
-        example: 01J8ZK...
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      locationUlid:
-        custom: []
-        name: locationUlid
-        description: 'Filter by location ULID. Must match an existing stored value.'
-        required: false
-        example: 01J8ZK...
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      cuppingAvgMin:
-        custom: []
-        name: cuppingAvgMin
-        description: 'Minimum average cupping score (0–100). Must be at least 0. Must not be greater than 100.'
-        required: false
-        example: 80.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      cuppingAvgMax:
-        custom: []
-        name: cuppingAvgMax
-        description: 'Maximum average cupping score (0–100). Must be ≥ cuppingAvgMin. Must be at least 0. Must not be greater than 100.'
-        required: false
-        example: 95.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      evaluationCountMin:
-        custom: []
-        name: evaluationCountMin
-        description: 'Minimum number of evaluations. Must be at least 0.'
-        required: false
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      evaluationCountMax:
-        custom: []
-        name: evaluationCountMax
-        description: 'Maximum number of evaluations. Must be ≥ evaluationCountMin. Must be at least 0.'
-        required: false
-        example: 50
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      defectiveCountMin:
-        custom: []
-        name: defectiveCountMin
-        description: 'Minimum number of defective evaluations. Must be at least 0.'
-        required: false
-        example: 0
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      defectiveCountMax:
-        custom: []
-        name: defectiveCountMax
-        description: 'Maximum number of defective evaluations. Must be ≥ defectiveCountMin. Must be at least 0.'
-        required: false
-        example: 5
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      fragranceMin:
-        custom: []
-        name: fragranceMin
-        description: 'Minimum fragrance score (1–9). Must be at least 1. Must not be greater than 9.'
-        required: false
-        example: 6.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      fragranceMax:
-        custom: []
-        name: fragranceMax
-        description: 'Maximum fragrance score (1–9). Must be at least 1. Must not be greater than 9.'
-        required: false
-        example: 8.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      aromaMin:
-        custom: []
-        name: aromaMin
-        description: 'Minimum aroma score (1–9). Must be at least 1. Must not be greater than 9.'
-        required: false
-        example: 6.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      aromaMax:
-        custom: []
-        name: aromaMax
-        description: 'Maximum aroma score (1–9). Must be at least 1. Must not be greater than 9.'
-        required: false
-        example: 8.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      flavorMin:
-        custom: []
-        name: flavorMin
-        description: 'Minimum flavor score (1–9). Must be at least 1. Must not be greater than 9.'
-        required: false
-        example: 6.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      flavorMax:
-        custom: []
-        name: flavorMax
-        description: 'Maximum flavor score (1–9). Must be at least 1. Must not be greater than 9.'
-        required: false
-        example: 8.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      aftertasteMin:
-        custom: []
-        name: aftertasteMin
-        description: 'Minimum aftertaste score (1–9). Must be at least 1. Must not be greater than 9.'
-        required: false
-        example: 6.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      aftertasteMax:
-        custom: []
-        name: aftertasteMax
-        description: 'Maximum aftertaste score (1–9). Must be at least 1. Must not be greater than 9.'
-        required: false
-        example: 8.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      acidityMin:
-        custom: []
-        name: acidityMin
-        description: 'Minimum acidity score (1–9). Must be at least 1. Must not be greater than 9.'
-        required: false
-        example: 6.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      acidityMax:
-        custom: []
-        name: acidityMax
-        description: 'Maximum acidity score (1–9). Must be at least 1. Must not be greater than 9.'
-        required: false
-        example: 8.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      sweetnessMin:
-        custom: []
-        name: sweetnessMin
-        description: 'Minimum sweetness score (1–9). Must be at least 1. Must not be greater than 9.'
-        required: false
-        example: 6.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      sweetnessMax:
-        custom: []
-        name: sweetnessMax
-        description: 'Maximum sweetness score (1–9). Must be at least 1. Must not be greater than 9.'
-        required: false
-        example: 8.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      mouthfeelMin:
-        custom: []
-        name: mouthfeelMin
-        description: 'Minimum mouthfeel score (1–9). Must be at least 1. Must not be greater than 9.'
-        required: false
-        example: 6.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      mouthfeelMax:
-        custom: []
-        name: mouthfeelMax
-        description: 'Maximum mouthfeel score (1–9). Must be at least 1. Must not be greater than 9.'
-        required: false
-        example: 8.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      overallMin:
-        custom: []
-        name: overallMin
-        description: 'Minimum overall score (1–9). Must be at least 1. Must not be greater than 9.'
-        required: false
-        example: 6.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      overallMax:
-        custom: []
-        name: overallMax
-        description: 'Maximum overall score (1–9). Must be at least 1. Must not be greater than 9.'
-        required: false
-        example: 8.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      cataRef:
-        custom: []
-        name: cataRef
-        description: 'Must match an existing stored value.'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      fragranceCata:
-        custom: []
-        name: fragranceCata
-        description: 'Must match an existing stored value.'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      aromaCata:
-        custom: []
-        name: aromaCata
-        description: 'Must match an existing stored value.'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      flavorCata:
-        custom: []
-        name: flavorCata
-        description: 'Must match an existing stored value.'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      aftertasteCata:
-        custom: []
-        name: aftertasteCata
-        description: 'Must match an existing stored value.'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      mouthfeelCata:
-        custom: []
-        name: mouthfeelCata
-        description: 'Must match an existing stored value.'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      orderBy:
-        custom: []
-        name: orderBy
-        description: 'Sort field. One of: cupping_avg, evaluation_count, created_at.'
-        required: false
-        example: cupping_avg
-        type: string
-        enumValues:
-          - cupping_avg
-          - evaluation_count
-          - created_at
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      orderDirection:
-        custom: []
-        name: orderDirection
-        description: 'Sort direction. One of: asc, desc.'
-        required: false
-        example: desc
-        type: string
-        enumValues:
-          - asc
-          - desc
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-    cleanQueryParameters:
-      coffeeName: Geisha
-      originCountry: Colombia
-      originRegion: Huila
-      process: Washed
-      producer: 'Finca La Esperanza'
-      variety: Caturra
-      city: Barcelona
-      coffeeshopUlid: 01J8ZK...
-      locationUlid: 01J8ZK...
-      cuppingAvgMin: 80.0
-      cuppingAvgMax: 95.0
-      evaluationCountMin: 1
-      evaluationCountMax: 50
-      defectiveCountMin: 0
-      defectiveCountMax: 5
-      fragranceMin: 6.0
-      fragranceMax: 8.0
-      aromaMin: 6.0
-      aromaMax: 8.0
-      flavorMin: 6.0
-      flavorMax: 8.0
-      aftertasteMin: 6.0
-      aftertasteMax: 8.0
-      acidityMin: 6.0
-      acidityMax: 8.0
-      sweetnessMin: 6.0
-      sweetnessMax: 8.0
-      mouthfeelMin: 6.0
-      mouthfeelMax: 8.0
-      overallMin: 6.0
-      overallMax: 8.0
-      cataRef:
-        - architecto
-      fragranceCata:
-        - architecto
-      aromaCata:
-        - architecto
-      flavorCata:
-        - architecto
-      aftertasteCata:
-        - architecto
-      mouthfeelCata:
-        - architecto
-      orderBy: cupping_avg
-      orderDirection: desc
+    queryParameters: []
+    cleanQueryParameters: []
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -571,203 +34,68 @@ endpoints:
       -
         custom: []
         status: 200
-        content: "{\r\n    \"data\": [\r\n        {\r\n            \"ulid\": \"01K6A3M8Q2V7XH4T9B5N1RCW0D\",\r\n            \"evaluationCount\": 5,\r\n            \"defectiveEvaluationCount\": 1,\r\n            \"cuppingAvg\": \"84.25\",\r\n            \"fragranceAffectiveAvg\": \"7.2\",\r\n            \"aromaAffectiveAvg\": \"7.8\",\r\n            \"flavorAffectiveAvg\": \"7.5\",\r\n            \"aftertasteAffectiveAvg\": \"7.1\",\r\n            \"acidityAffectiveAvg\": \"7.4\",\r\n            \"sweetnessAffectiveAvg\": \"7.6\",\r\n            \"mouthfeelAffectiveAvg\": \"7.0\",\r\n            \"overallAffectiveAvg\": \"7.9\",\r\n            \"concordanceAffective\": \"0.812\",\r\n            \"concordanceDescriptive\": \"0.740\",\r\n            \"verificationStatus\": \"verified\",\r\n            \"location\": {\r\n                \"ulid\": \"01K5Z9C2T6H8M3Q7V1X4B9N2PA\",\r\n                \"name\": \"Tazavera Gràcia\",\r\n                \"description\": \"Barra de especialidad en Gràcia.\",\r\n                \"latitud\": \"41.40290000\",\r\n                \"longitud\": \"2.15650000\"\r\n            },\r\n            \"coffeeInventory\": {\r\n                \"ulid\": \"01K5Y4R7N2D9W6T3H8M1Q5V0XC\",\r\n                \"roastLot\": \"L-2026-014\",\r\n                \"productionDate\": \"2026-09-19\",\r\n                \"coffee\": {\r\n                    \"ulid\": \"01K5X2B8P4F7J3N9R6T1W5Y0ZG\",\r\n                    \"name\": \"Huila El Mirador\",\r\n                    \"roastLevel\": \"medium\",\r\n                    \"process\": \"washed\",\r\n                    \"variety\": \"Caturra\",\r\n                    \"producer\": null,\r\n                    \"country\": \"Colombia\",\r\n                    \"region\": \"Huila\",\r\n                    \"altitude\": 1800,\r\n                    \"lot\": \"HM-07\"\r\n                },\r\n                \"roastery\": {\r\n                    \"ulid\": \"01K5W7H3M9Q2T6X4B8N1R5V0CE\",\r\n                    \"name\": \"Nómada Roasters\",\r\n                    \"description\": \"Tostador de especialidad en Barcelona.\"\r\n                }\r\n            },\r\n            \"sensoryTaxonomy\": [\r\n                {\r\n                    \"ref\": \"01JTAXN0DE0000000000000001\",\r\n                    \"type\": \"flavor\",\r\n                    \"level\": 0,\r\n                    \"count\": 5,\r\n                    \"children\": [\r\n                        {\r\n                            \"ref\": \"01JTAXN0DE0000000000000002\",\r\n                            \"type\": \"flavor\",\r\n                            \"level\": 1,\r\n                            \"count\": 4,\r\n                            \"children\": [\r\n                                {\r\n                                    \"ref\": \"01JTAXN0DE0000000000000003\",\r\n                                    \"type\": \"flavor\",\r\n                                    \"level\": 2,\r\n                                    \"count\": 4\r\n                                }\r\n                            ]\r\n                        },\r\n                        {\r\n                            \"ref\": \"01JTAXN0DE0000000000000004\",\r\n                            \"type\": \"flavor\",\r\n                            \"level\": 1,\r\n                            \"count\": 2,\r\n                            \"children\": [\r\n                                {\r\n                                    \"ref\": \"01JTAXN0DE0000000000000005\",\r\n                                    \"type\": \"flavor\",\r\n                                    \"level\": 2,\r\n                                    \"count\": 2\r\n                                }\r\n                            ]\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    \"ref\": \"01JTAXN0DE0000000000000006\",\r\n                    \"type\": \"aroma\",\r\n                    \"level\": 0,\r\n                    \"count\": 3,\r\n                    \"children\": [\r\n                        {\r\n                            \"ref\": \"01JTAXN0DE0000000000000007\",\r\n                            \"type\": \"aroma\",\r\n                            \"level\": 1,\r\n                            \"count\": 3,\r\n                            \"children\": [\r\n                                {\r\n                                    \"ref\": \"01JTAXN0DE0000000000000008\",\r\n                                    \"type\": \"aroma\",\r\n                                    \"level\": 2,\r\n                                    \"count\": 3\r\n                                }\r\n                            ]\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    \"ref\": \"01JTAXN0DE0000000000000009\",\r\n                    \"type\": \"main_tastes\",\r\n                    \"level\": 0,\r\n                    \"count\": 5,\r\n                    \"children\": []\r\n                },\r\n                {\r\n                    \"ref\": \"01JTAXN0DE000000000000000A\",\r\n                    \"type\": \"defects\",\r\n                    \"level\": 0,\r\n                    \"count\": 1,\r\n                    \"children\": [\r\n                        {\r\n                            \"ref\": \"01JTAXN0DE000000000000000B\",\r\n                            \"type\": \"defects\",\r\n                            \"level\": 1,\r\n                            \"count\": 1,\r\n                            \"children\": []\r\n                        }\r\n                    ]\r\n                }\r\n            ],\r\n            \"cataConcordance\": [\r\n                {\r\n                    \"ref\": \"01JTAXN0DE0000000000000001\",\r\n                    \"type\": \"aromatics\",\r\n                    \"level\": 0,\r\n                    \"count\": 5,\r\n                    \"children\": [\r\n                        {\r\n                            \"ref\": \"01JTAXN0DE0000000000000002\",\r\n                            \"type\": \"aromatics\",\r\n                            \"level\": 1,\r\n                            \"count\": 4,\r\n                            \"children\": [\r\n                                {\r\n                                    \"ref\": \"01JTAXN0DE0000000000000003\",\r\n                                    \"type\": \"aromatics\",\r\n                                    \"level\": 2,\r\n                                    \"count\": 4\r\n                                }\r\n                            ]\r\n                        },\r\n                        {\r\n                            \"ref\": \"01JTAXN0DE0000000000000004\",\r\n                            \"type\": \"aromatics\",\r\n                            \"level\": 1,\r\n                            \"count\": 2,\r\n                            \"children\": [\r\n                                {\r\n                                    \"ref\": \"01JTAXN0DE0000000000000005\",\r\n                                    \"type\": \"aromatics\",\r\n                                    \"level\": 2,\r\n                                    \"count\": 2\r\n                                }\r\n                            ]\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    \"ref\": \"01JTAXN0DE0000000000000006\",\r\n                    \"type\": \"aromatics\",\r\n                    \"level\": 0,\r\n                    \"count\": 3,\r\n                    \"children\": [\r\n                        {\r\n                            \"ref\": \"01JTAXN0DE0000000000000007\",\r\n                            \"type\": \"aromatics\",\r\n                            \"level\": 1,\r\n                            \"count\": 3,\r\n                            \"children\": [\r\n                                {\r\n                                    \"ref\": \"01JTAXN0DE0000000000000008\",\r\n                                    \"type\": \"aromatics\",\r\n                                    \"level\": 2,\r\n                                    \"count\": 3\r\n                                }\r\n                            ]\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    \"ref\": \"01JTAXN0DE0000000000000009\",\r\n                    \"type\": \"main_tastes\",\r\n                    \"level\": 0,\r\n                    \"count\": 5,\r\n                    \"children\": []\r\n                },\r\n                {\r\n                    \"ref\": \"01JTAXN0DE000000000000000A\",\r\n                    \"type\": \"defects\",\r\n                    \"level\": 0,\r\n                    \"count\": 1,\r\n                    \"children\": [\r\n                        {\r\n                            \"ref\": \"01JTAXN0DE000000000000000B\",\r\n                            \"type\": \"defects\",\r\n                            \"level\": 1,\r\n                            \"count\": 1,\r\n                            \"children\": []\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"ulid\": \"01K6A3M8Q2V7XH4T9B5N1RCW0E\",\r\n            \"evaluationCount\": 0,\r\n            \"defectiveEvaluationCount\": 0,\r\n            \"verificationStatus\": \"provisional\",\r\n            \"location\": {\r\n                \"ulid\": \"01K5Z9C2T6H8M3Q7V1X4B9N2PB\",\r\n                \"name\": \"Tazavera Born\",\r\n                \"description\": \"Tienda y barra en el Born.\",\r\n                \"latitud\": \"41.38490000\",\r\n                \"longitud\": \"2.18210000\"\r\n            },\r\n            \"coffeeInventory\": {\r\n                \"ulid\": \"01K5Y4R7N2D9W6T3H8M1Q5V0XC\",\r\n                \"roastLot\": \"L-2026-014\",\r\n                \"productionDate\": \"2026-09-19\",\r\n                \"coffee\": {\r\n                    \"ulid\": \"01K5X2B8P4F7J3N9R6T1W5Y0ZG\",\r\n                    \"name\": \"Huila El Mirador\",\r\n                    \"roastLevel\": \"medium\",\r\n                    \"process\": \"washed\",\r\n                    \"variety\": \"Caturra\",\r\n                    \"producer\": null,\r\n                    \"country\": \"Colombia\",\r\n                    \"region\": \"Huila\",\r\n                    \"altitude\": 1800,\r\n                    \"lot\": \"HM-07\"\r\n                },\r\n                \"roastery\": {\r\n                    \"ulid\": \"01K5W7H3M9Q2T6X4B8N1R5V0CE\",\r\n                    \"name\": \"Nómada Roasters\",\r\n                    \"description\": \"Tostador de especialidad en Barcelona.\"\r\n                }\r\n            },\r\n            \"sensoryTaxonomy\": [],\r\n            \"cataConcordance\": []\r\n        }\r\n    ],\r\n    \"links\": {\r\n        \"first\": \"http://localhost/api/offerings?page=1\",\r\n        \"last\": \"http://localhost/api/offerings?page=1\",\r\n        \"prev\": null,\r\n        \"next\": null\r\n    },\r\n    \"meta\": {\r\n        \"current_page\": 1,\r\n        \"from\": 1,\r\n        \"last_page\": 1,\r\n        \"links\": [\r\n            {\r\n                \"url\": null,\r\n                \"label\": \"&laquo; Previous\",\r\n                \"active\": false\r\n            },\r\n            {\r\n                \"url\": \"http://localhost/api/offerings?page=1\",\r\n                \"label\": \"1\",\r\n                \"active\": true\r\n            },\r\n            {\r\n                \"url\": null,\r\n                \"label\": \"Next &raquo;\",\r\n                \"active\": false\r\n            }\r\n        ],\r\n        \"path\": \"http://localhost/api/offerings\",\r\n        \"per_page\": 15,\r\n        \"to\": 2,\r\n        \"total\": 2\r\n    }\r\n}"
+        content: |-
+          {
+              "data": [
+                  {
+                      "ulid": "01JTAXN0DE0000000000000001",
+                      "level": 0,
+                      "nameEn": "Fruity",
+                      "nameEs": "Frutal",
+                      "descriptionEn": "Aromas reminiscent of fresh, dried, or cooked fruit.",
+                      "descriptionEs": "Aromas que recuerdan a fruta fresca, seca o cocida.",
+                      "color": "#D9345A",
+                      "categories": [
+                          "aromatics"
+                      ],
+                      "children": [
+                          {
+                              "ulid": "01JTAXN0DE0000000000000004",
+                              "level": 1,
+                              "nameEn": "Berry",
+                              "nameEs": "Baya",
+                              "descriptionEn": "Notes of berry fruits.",
+                              "descriptionEs": "Notas de frutos del bosque.",
+                              "color": "#B02A4A",
+                              "categories": [
+                                  "aromatics"
+                              ],
+                              "children": [
+                                  {
+                                      "ulid": "01JTAXN0DE0000000000000005",
+                                      "level": 2,
+                                      "nameEn": "Blackberry",
+                                      "nameEs": "Mora",
+                                      "descriptionEn": "Specific note of blackberry.",
+                                      "descriptionEs": "Nota específica de mora.",
+                                      "color": "#7A1F35",
+                                      "categories": [
+                                          "aromatics"
+                                      ]
+                                  }
+                              ]
+                          },
+                          {
+                              "ulid": "01JTAXN0DE000000000000000D",
+                              "level": 1,
+                              "nameEn": "Dried fruit",
+                              "nameEs": "Fruta seca",
+                              "descriptionEn": "Notes of dried or dehydrated fruit.",
+                              "descriptionEs": "Notas de fruta seca o deshidratada.",
+                              "color": "#C4562F",
+                              "categories": [
+                                  "aromatics"
+                              ],
+                              "children": []
+                          }
+                      ]
+                  }
+              ]
+          }
         headers: []
         description: ''
     responseFields: []
     auth: []
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - POST
-    uri: offerings
-    metadata:
-      custom: []
-      groupName: Offerings
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Create offerings'
-      description: |-
-        Creates one offering per location for a given coffee inventory item. A single
-        request may target multiple locations; one offering is created for each,
-        all within a single database transaction (all-or-nothing).
-
-        **Authorization:** requires the `coffeeshop` role and the `profile:write`
-        scope. The authenticated user must own every location referenced
-        (`owns.location`).
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer {ACCESS_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      coffeeInventoryId:
-        custom: []
-        name: coffeeInventoryId
-        description: 'The ULID of the coffee inventory item the offerings are based on. Despite the name, this expects a ULID, not a numeric ID. Must match an existing stored value.'
-        required: true
-        example: 01J8ZK...
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      locations:
-        custom: []
-        name: locations
-        description: 'Must match an existing stored value.'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-    cleanBodyParameters:
-      coffeeInventoryId: 01J8ZK...
-      locations:
-        - architecto
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 201
-        content: "{\r\n    \"data\": [\r\n        {\r\n            \"ulid\": \"01K6A3M8Q2V7XH4T9B5N1RCW0D\",\r\n            \"evaluationCount\": 0,\r\n            \"defectiveEvaluationCount\": 0,\r\n            \"verificationStatus\": \"provisional\",\r\n            \"location\": {\r\n                \"ulid\": \"01K5Z9C2T6H8M3Q7V1X4B9N2PA\",\r\n                \"name\": \"Tazavera Gràcia\",\r\n                \"description\": \"Barra de especialidad en Gràcia.\",\r\n                \"latitud\": \"41.40290000\",\r\n                \"longitud\": \"2.15650000\"\r\n            },\r\n            \"coffeeInventory\": {\r\n                \"ulid\": \"01K5Y4R7N2D9W6T3H8M1Q5V0XC\",\r\n                \"roastLot\": \"L-2026-014\",\r\n                \"productionDate\": \"2026-09-19\",\r\n                \"coffee\": {\r\n                    \"ulid\": \"01K5X2B8P4F7J3N9R6T1W5Y0ZG\",\r\n                    \"name\": \"Huila El Mirador\",\r\n                    \"roastLevel\": \"medium\",\r\n                    \"process\": \"washed\",\r\n                    \"variety\": \"Caturra\",\r\n                    \"producer\": null,\r\n                    \"country\": \"Colombia\",\r\n                    \"region\": \"Huila\",\r\n                    \"altitude\": 1800,\r\n                    \"lot\": \"HM-07\"\r\n                },\r\n                \"roastery\": {\r\n                    \"ulid\": \"01K5W7H3M9Q2T6X4B8N1R5V0CE\",\r\n                    \"name\": \"Nómada Roasters\",\r\n                    \"description\": \"Tostador de especialidad en Barcelona.\"\r\n                }\r\n            }\r\n        },\r\n        {\r\n            \"ulid\": \"01K6A3M8Q2V7XH4T9B5N1RCW0E\",\r\n            \"evaluationCount\": 0,\r\n            \"defectiveEvaluationCount\": 0,\r\n            \"verificationStatus\": \"provisional\",\r\n            \"location\": {\r\n                \"ulid\": \"01K5Z9C2T6H8M3Q7V1X4B9N2PB\",\r\n                \"name\": \"Tazavera Born\",\r\n                \"description\": \"Tienda y barra en el Born.\",\r\n                \"latitud\": \"41.38490000\",\r\n                \"longitud\": \"2.18210000\"\r\n            },\r\n            \"coffeeInventory\": {\r\n                \"ulid\": \"01K5Y4R7N2D9W6T3H8M1Q5V0XC\",\r\n                \"roastLot\": \"L-2026-014\",\r\n                \"productionDate\": \"2026-09-19\",\r\n                \"coffee\": {\r\n                    \"ulid\": \"01K5X2B8P4F7J3N9R6T1W5Y0ZG\",\r\n                    \"name\": \"Huila El Mirador\",\r\n                    \"roastLevel\": \"medium\",\r\n                    \"process\": \"washed\",\r\n                    \"variety\": \"Caturra\",\r\n                    \"producer\": null,\r\n                    \"country\": \"Colombia\",\r\n                    \"region\": \"Huila\",\r\n                    \"altitude\": 1800,\r\n                    \"lot\": \"HM-07\"\r\n                },\r\n                \"roastery\": {\r\n                    \"ulid\": \"01K5W7H3M9Q2T6X4B8N1R5V0CE\",\r\n                    \"name\": \"Nómada Roasters\",\r\n                    \"description\": \"Tostador de especialidad en Barcelona.\"\r\n                }\r\n            }\r\n        }\r\n    ],\r\n    \"message\": \"Offering(s) created.\"\r\n}"
-        headers: []
-        description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - DELETE
-    uri: 'offerings/{offering_ulid}'
-    metadata:
-      custom: []
-      groupName: Offerings
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Delete an offering'
-      description: |-
-        Permanently deletes a single offering. This action cannot be undone.
-
-        **Authorization:** requires the `coffeeshop` role and the `profile:write`
-        scope. The authenticated user must own the offering (`owns.offering`).
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer {ACCESS_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      offering_ulid:
-        custom: []
-        name: offering_ulid
-        description: 'The ULID of the offering.'
-        required: true
-        example: 01K6A3M8Q2V7XH4T9B5N1RCW0D
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      offering_ulid: 01K6A3M8Q2V7XH4T9B5N1RCW0D
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"message": "Offering(s) deleted."}'
-        headers: []
-        description: Deleted
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - DELETE
-    uri: offerings
-    metadata:
-      custom: []
-      groupName: Offerings
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Delete multiple offerings'
-      description: |-
-        Permanently deletes several offerings in one request, identified by their
-        ULIDs (maximum 50). This action cannot be undone.
-
-        **Authorization:** requires the `coffeeshop` role and the `profile:write`
-        scope. The authenticated user must own all referenced offerings
-        (`owns.offering`).
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer {ACCESS_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      offerings:
-        custom: []
-        name: offerings
-        description: 'Must match an existing stored value.'
-        required: true
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-    cleanBodyParameters:
-      offerings:
-        - architecto
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"message": "Offering(s) deleted."}'
-        headers: []
-        description: Deleted
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
