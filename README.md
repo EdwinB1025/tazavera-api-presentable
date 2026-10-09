@@ -34,7 +34,7 @@ The detail of the formulas, the threshold, and the reinterpretation of the deduc
 
 ## 📚 Documentation
 
-- 📖 **API docs:** [View documentation](https://edwinb1025.github.io/tazzavera-api/public/docs/index.html)
+- 📖 **API docs:** [View documentation](https://edwinb1025.github.io/tazzavera-api-presetnable/public/docs/index.html)
 
 The page includes example requests (bash, JavaScript), a Postman collection (`/docs/collection.json`), and an OpenAPI spec (`/docs/openapi.yaml`).
 
